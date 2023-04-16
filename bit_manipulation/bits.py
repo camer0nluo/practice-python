@@ -124,7 +124,7 @@ def swap_ints(a, b):
 
 
 def main():
-    for x in range(0, 20):
+    for x in range(20):
         print(x, bin(x), hex(x))
 
     print("Hamming distance: 1010111100 and 1001010101: ", hamming_distance(0b1010111100, 0b1001010101))
@@ -144,19 +144,19 @@ def main():
     print("Hamming weight: 0000000000:", hamming_weight(0b0000000000))
     print("Hamming weight: 11111111:", hamming_weight(0b11111111))
 
-    print("PopCount: " + str(bin(1231424)) + ":", pop_count(1231424))
-    print("PopCount: " + str(bin(123)) + ":", pop_count(123))
-    print("PopCount: " + str(bin(8568)) + ":", pop_count(8568))
-    print("PopCount: " + str(bin(1)) + ":", pop_count(1))
-    print("PopCount: " + str(bin(-1)) + ":", pop_count(-1))
-    print("PopCount: " + str(bin(4)) + ":", pop_count(4))
-    print("PopCount: " + str(bin(903523125)) + ":", pop_count(903523125))
+    print(f"PopCount: {bin(1231424)}:", pop_count(1231424))
+    print(f"PopCount: {bin(123)}:", pop_count(123))
+    print(f"PopCount: {bin(8568)}:", pop_count(8568))
+    print(f"PopCount: {bin(1)}:", pop_count(1))
+    print(f"PopCount: {bin(-1)}:", pop_count(-1))
+    print(f"PopCount: {bin(4)}:", pop_count(4))
+    print(f"PopCount: {bin(903523125)}:", pop_count(903523125))
 
-    for x in range(0, 5):
-        print(str(x) + " is even?", is_even(x))
+    for x in range(5):
+        print(f"{str(x)} is even?", is_even(x))
 
-    for x in range(0, 17):
-        print(str(x) + " is power of 2?", is_power_of_2(x))
+    for x in range(17):
+        print(f"{str(x)} is power of 2?", is_power_of_2(x))
 
     print("Get 3 bits starting at position 5 in 1010111100", bin(get_bits(0b1010111100, 5, 3)))
     print("Get 3 bits starting at position 8 in 1010111100", bin(get_bits(0b1010111100, 9, 3)))
@@ -179,11 +179,11 @@ def main():
     print("Sign of -1", get_sign(-1))
     print("Sign of -23", get_sign(-23))
 
-    for x in range(0, 12):
-        print("has parity: " + str(x), has_parity(x), bin(x))
+    for x in range(12):
+        print(f"has parity: {str(x)}", has_parity(x), bin(x))
 
-    for x in range(0, 7):
-        print("has parity (parallel): " + str(x), has_parity_parallel(x), bin(x))
+    for x in range(7):
+        print(f"has parity (parallel): {str(x)}", has_parity_parallel(x), bin(x))
 
     print("Next power of 2 after 3", next_power_of_2(3))
     print("Next power of 2 after 4", next_power_of_2(4))

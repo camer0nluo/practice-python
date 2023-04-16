@@ -23,12 +23,9 @@ class ConvexHull(object):
         :param p2:
         :return: integer
         '''
-        difference = (
-            ((p2.x - origin.x) * (p1.y - origin.y))
-            - ((p1.x - origin.x) * (p2.y - origin.y))
+        return ((p2.x - origin.x) * (p1.y - origin.y)) - (
+            (p1.x - origin.x) * (p2.y - origin.y)
         )
-
-        return difference
 
     def compute_hull(self):
         '''
@@ -51,25 +48,15 @@ class ConvexHull(object):
         far_point = None
         while far_point is not start:
 
-            # get the first point (initial max) to use to compare with others
-            p1 = None
-            for p in points:
-                if p is point:
-                    continue
-                else:
-                    p1 = p
-                    break
-
+            p1 = next((p for p in points if p is not point), None)
             far_point = p1
 
             for p2 in points:
-                # ensure we aren't comparing to self or pivot point
                 if p2 is point or p2 is p1:
                     continue
-                else:
-                    direction = self._get_orientation(point, far_point, p2)
-                    if direction > 0:
-                        far_point = p2
+                direction = self._get_orientation(point, far_point, p2)
+                if direction > 0:
+                    far_point = p2
 
             self._hull_points.append(far_point)
             point = far_point

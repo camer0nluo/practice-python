@@ -26,8 +26,7 @@ class DirectedGraph(object):
         Generator for returning the next vertex from the adjacency list
         :return:
         """
-        for v in self.adjacency_list:
-            yield v
+        yield from self.adjacency_list
 
     def get_neighbor(self, vertex):
         """
@@ -36,8 +35,7 @@ class DirectedGraph(object):
         :return:
         """
         if vertex in self.adjacency_list:
-            for u in self.adjacency_list[vertex]:
-                yield u
+            yield from self.adjacency_list[vertex]
 
     def get_reverse_neighbor(self, vertex):
         """
@@ -53,8 +51,7 @@ class DirectedGraph(object):
                 reversed_list[w].add(v)
 
         if vertex in reversed_list:
-            for u in reversed_list[vertex]:
-                yield u
+            yield from reversed_list[vertex]
 
     def dfs(self):
         """
@@ -170,10 +167,7 @@ class DirectedGraph(object):
                     statuses[v] = STATUS_STARTED
                     to_visit.append(v)  # add to stack again to signal vertex has finished DFS
 
-                for u in self.get_neighbor(v):
-                    if u not in statuses:
-                        to_visit.append(u)
-
+                to_visit.extend(u for u in self.get_neighbor(v) if u not in statuses)
         order.reverse()
 
         return order
@@ -184,9 +178,7 @@ class DirectedGraph(object):
         :return list of lists, one for each component's vertices:
         """
         stack = self.scc_dfs_forward_pass()
-        components = self.scc_dfs_reverse_pass(stack)
-
-        return components
+        return self.scc_dfs_reverse_pass(stack)
 
     def scc_dfs_forward_pass(self):
         stack = []

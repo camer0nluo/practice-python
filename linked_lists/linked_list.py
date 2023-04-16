@@ -20,7 +20,7 @@ class LinkedList(object):
         current = self.head_
         output = ""
         while current:
-            output += str(current) + " -> "
+            output += f"{str(current)} -> "
             current = current.get_next()
         return output
 

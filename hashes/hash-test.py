@@ -17,10 +17,7 @@ def load_words():
             line = line.replace("--", ' ')
             line_words = line.split(" ")
             for word in line_words:
-                word = ''.join(ch for ch in word if ch not in exclude)
-
-                # add to dict and keep track of times it occurs
-                if word:
+                if word := ''.join(ch for ch in word if ch not in exclude):
                     word = word.lower()
                     word_count += 1
                     if word in words:
@@ -66,11 +63,7 @@ def first_prime_greater_than(min):
     "for" loop that satisfy the (optional) if expression.
     """
 
-    for n in scipy.arange(min + 1, min * 2):
-        if is_prime(n):
-            return n
-
-    return None
+    return next((n for n in scipy.arange(min + 1, min * 2) if is_prime(n)), None)
 
 
 def randomhash(m):
@@ -97,7 +90,7 @@ def polyhash_noprime(word, a, m):
 def show_distribution(buckets, title):
     counts = {}
     for v in buckets:
-        if v in counts.keys():
+        if v in counts:
             counts[v] += 1
         else:
             counts[v] = 1
@@ -113,12 +106,12 @@ def main():
     words = load_words()
     word_count = len(words)
 
-    m = int(word_count / 2)  # hash table will be at load = 0.5
+    m = word_count // 2
 
     # random
 
     buckets = [0] * m
-    for w in words:
+    for _ in words:
         hash = randomhash(m)
         buckets[hash] += 1
 

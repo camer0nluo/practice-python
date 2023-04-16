@@ -7,9 +7,10 @@ def main():
     output = []
 
     with open(input_file, "r") as input_handle:
-        for line_number, line in enumerate(input_handle, 1):
-            output.append(line_number * int(line.rstrip()))
-
+        output.extend(
+            line_number * int(line.rstrip())
+            for line_number, line in enumerate(input_handle, 1)
+        )
     output_handle = open(output_file, "w")
     output_handle.write('\n'.join(str(n) for n in output))
 
