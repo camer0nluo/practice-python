@@ -4,13 +4,17 @@ import random
 
 
 def execute_thread(thread_num):
-    print("Thread {} sleeps at {}.".format(thread_num, time.strftime("%H:%M:%S", time.gmtime())))
+    print(
+        f'Thread {thread_num} sleeps at {time.strftime("%H:%M:%S", time.gmtime())}.'
+    )
 
     sleep_time = random.randint(1, 5)
 
     time.sleep(sleep_time)
 
-    print("Thread {} stops sleeping at {}.".format(thread_num, time.strftime("%H:%M:%S", time.gmtime())))
+    print(
+        f'Thread {thread_num} stops sleeping at {time.strftime("%H:%M:%S", time.gmtime())}.'
+    )
 
 
 def main():

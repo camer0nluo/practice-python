@@ -10,7 +10,7 @@ def do_search(search_term):
             lines = sorted(movies['Search'], key=lambda m: m['Year'], reverse=True)
 
             for movie in lines:
-                print("{} - {}".format(movie['Year'], movie['Title']))
+                print(f"{movie['Year']} - {movie['Title']}")
         else:
             print('Nothing found')
 

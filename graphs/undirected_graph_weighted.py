@@ -21,12 +21,10 @@ class GraphUndirectedWeighted(object):
         :param vertex:
         :rtype: Edge
         """
-        for e in self.adjacency_list[vertex]:
-            yield e
+        yield from self.adjacency_list[vertex]
 
     def get_vertex(self):
-        for v in range(self.vertex_count):
-            yield v
+        yield from range(self.vertex_count)
 
     def dijkstra(self, source, dest):
         q = queue.PriorityQueue()
@@ -92,11 +90,10 @@ class GraphUndirectedWeighted(object):
             s.add(vertex)
 
             for u in self.get_neighbor(vertex):
-                if u.vertex not in s:
-                    if u.weight < weights[u.vertex]:
-                        parents[u.vertex] = vertex
-                        weights[u.vertex] = u.weight
-                        q.put(([u.weight, u.vertex]))
+                if u.vertex not in s and u.weight < weights[u.vertex]:
+                    parents[u.vertex] = vertex
+                    weights[u.vertex] = u.weight
+                    q.put(([u.weight, u.vertex]))
 
         return parents
 

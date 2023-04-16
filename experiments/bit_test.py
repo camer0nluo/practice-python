@@ -9,17 +9,16 @@ def bit_test():
         correct = False
         attempts = 1
         while not correct:
-            answer = input('What is {} in decimal? '.format(bits.replace('0b', '').rjust(8, '0')))
+            answer = input(f"What is {bits.replace('0b', '').rjust(8, '0')} in decimal? ")
             attempts += 1
             if int(answer) == rand_num:
                 print('*** Correct! ***')
                 correct = True
+            elif attempts > 3:
+                print(f'The answer is: {rand_num}')
+                correct = True
             else:
-                if attempts > 3:
-                    print('The answer is: {}'.format(rand_num))
-                    correct = True
-                else:
-                    print('Try again.')
+                print('Try again.')
 
 
 def main():

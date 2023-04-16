@@ -36,10 +36,7 @@ def check_sort(original):
 
 def contain_same_ints(arr1, arr2):
     for i in arr1:
-        found = False
-        for j in arr2:
-            if i == j:
-                found = True
+        found = any(i == j for j in arr2)
         if not found:
             return False
 

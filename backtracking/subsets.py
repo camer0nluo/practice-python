@@ -58,7 +58,7 @@ def main():
 
     backtrack_compact({}, 0, n)
     print(solutions)
-    print('Number of subsets: {}'.format(len(solutions)))
+    print(f'Number of subsets: {len(solutions)}')
 
 
 if __name__ == '__main__':

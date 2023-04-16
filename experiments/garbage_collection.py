@@ -11,9 +11,7 @@ def main():
     a = 4
     b = 5
 
-    c_list = []
-    c_list.append(123)
-    c_list.append(456)
+    c_list = [123, 456]
     # reference cycle
     c_list.append(c_list)
     c_list[2].append(789)
@@ -23,21 +21,21 @@ def main():
 
     print(c_list)
 
-    print("Stats: {}".format(gc.get_stats()))
-    print("Count: {}".format(gc.get_count()))
-    print("GC enabled: {}".format(gc.isenabled()))
-    print("Threshold: {}".format(gc.get_threshold()))
-    print("c_list is tracked: {}".format(gc.is_tracked(c_list)))
+    print(f"Stats: {gc.get_stats()}")
+    print(f"Count: {gc.get_count()}")
+    print(f"GC enabled: {gc.isenabled()}")
+    print(f"Threshold: {gc.get_threshold()}")
+    print(f"c_list is tracked: {gc.is_tracked(c_list)}")
 
     """
     The count returned is generally one higher than you might expect,
     because it includes the (temporary) reference as an argument to getrefcount().
     """
-    print("Reference count for c_list: {}".format(sys.getrefcount(c_list)))
+    print(f"Reference count for c_list: {sys.getrefcount(c_list)}")
     del c_list[2]
-    print("Reference count for c_list: {}".format(sys.getrefcount(c_list)))
+    print(f"Reference count for c_list: {sys.getrefcount(c_list)}")
 
-    print("Collecting: {}".format(gc.collect()))
+    print(f"Collecting: {gc.collect()}")
 
     print("Done.")
 

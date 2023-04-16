@@ -5,7 +5,7 @@ class Edge(object):
         self.capacity = w
 
     def __repr__(self):
-        return "%s->%s:%s" % (self.source, self.sink, self.capacity)
+        return f"{self.source}->{self.sink}:{self.capacity}"
 
 
 class FlowNetwork(object):

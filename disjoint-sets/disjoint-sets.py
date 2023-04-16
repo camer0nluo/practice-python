@@ -29,10 +29,9 @@ class DisjointSets(object):
         '''
         if self.hierarchy[item_id] < 0:
             return item_id
-        else:
-            # path compression
-            self.hierarchy[item_id] = self.find(self.hierarchy[item_id])
-            return self.hierarchy[item_id]
+        # path compression
+        self.hierarchy[item_id] = self.find(self.hierarchy[item_id])
+        return self.hierarchy[item_id]
 
     def __str__(self):
         ret_str = repr(self.hierarchy)

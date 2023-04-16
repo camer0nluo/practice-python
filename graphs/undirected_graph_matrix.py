@@ -8,8 +8,7 @@ class UndirectedGraph(object):
 
     def __init__(self, vertices):
         self.adjacency_matrix = []
-        for i in range(vertices):
-            self.adjacency_matrix.append([0] * vertices)
+        self.adjacency_matrix.extend([0] * vertices for _ in range(vertices))
 
     def add_edge(self, source, destination):
         """
@@ -104,11 +103,9 @@ class UndirectedGraph(object):
         Returns true if graph is bipartite
         :rtype: bool
         """
-        colorings = {}
         to_visit = queue.Queue()
         to_visit.put(0)
-        colorings[0] = 0
-
+        colorings = {0: 0}
         while not to_visit.empty():
             v = to_visit.get()
 
